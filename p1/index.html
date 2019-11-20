@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> ZEUS </title> 
+
+		<!-- CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="js/functions.js"></script>
+        
+        <!-- JQuery -->
+		<script>$(function(){$("#footer").load("footer.html");$("#header").load("header.html");});</script>
+		<script>
+			var showing = [1, 0, 0, 0, 0];
+			var questions = ['q0','q1','q2','q3','q4'];
+			function next() {
+			    var qElems = [];
+			    for (var i = 0; i < questions.length; i++) {
+			        qElems.push(document.getElementById(questions[i]));   
+			    }
+			    for (var i = 0; i < showing.length; i++) {
+			        if (showing[i] == 1) {
+			            qElems[i].style.display = 'none';
+			            showing[i] = 0;
+			            if (i == showing.length - 1) {
+			            	var resultat = document.getElementById("q5");
+			               	var bouton = document.getElementById("next");
+			               	var cookies = document.getElementById("cookies")
+			               	bouton.style.display = "none";
+                            cookies.style.display = "none";
+                            var res = resultatFinal();
+                            console.log("res: " + res);
+                            if(res == "tres") {
+                                var smiley = document.getElementById("tres");
+                                smiley.style.display = "block";
+                                smiley = document.getElementById("img-tres");
+                                smiley.style.display = "block";
+                            }
+                            else if(res == "moyen") {
+                                var smiley = document.getElementById("moyen");
+                                smiley.style.display = "block";
+                                smiley = document.getElementById("img-moyen");
+                                smiley.style.display = "block";
+                            }
+                            else if(res == "peu") {
+                                var smiley = document.getElementById("peu");
+                                smiley.style.display = "block";
+                                smiley = document.getElementById("img-peu");
+                                smiley.style.display = "block";
+                            }
+                            else {
+                                document.write("Erreur  ");
+                            }
+			               	q5.style.display = "block";
+			            } else {
+			                qElems[i + 1].style.display = "block";
+			                showing[i + 1] = 1;
+			            }
+			            break;
+			        }
+			    }      
+			}
+		</script>
+	</head>
+
+	<body style="font-family: Segoe UI;" onload="fill();">
+        <div id="header"></div>
+        
+    <br/><br/>
+
+	<div id="questions" style="display: block;">
+        <div>
+            <header id="header-enquete">
+                <!-- 2e header -->.
+                <div class="container" style="background-color: #454d5d;">
+                    <nav>
+                        <a class="nav1 lien1" href="#q0">Ancre1 &nbsp &nbsp></a>
+                        <a class="nav1" href="#q1">Ancre2 &nbsp &nbsp></a>
+                        <a class="nav1" href="#q2">Ancre3 &nbsp &nbsp></a>
+                        <a class="nav1" href="#q3">Ancre4 &nbsp &nbsp></a>
+                        <a class="nav1" href="#q4">Ancre5</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+
+        </br></br>
+
+		<div id="q0" style="display: block">
+	        <form method='post'>
+	            <div class="container">
+	                <div class="form-group">
+	                  <label id="inscription" for="nom">Nom :</label>
+	                  <input type="text" class="form-control" id="nom" aria-describedby="emailHelp" value="" onfocusout="verifIdentiteNom()" placeholder="Entrer votre nom">
+	                </div>
+	                <div class="form-group">
+	                  <label for="prenom">Prénom :</label>
+	                  <input type="text" class="form-control" id="prenom" value="" onfocusout="verifIdentitePrenom()" placeholder="Entrer votre prénom">
+	                </div>
+	                <div class="form-group">
+	                        <label for="email">E-mail :</label>
+	                        <input type="text" class="form-control" id="mail" value="" onfocusout="verifMail()" aria-describedby="emailHelp" placeholder="Entrer votre e-mail">
+                            <small id="emailHelp" class="form-text text-muted">exemple@exemple.com</small>
+					</div>
+					<div class="form-group">
+						<label for="age">Date de Naissance :</label>
+						<input type="text" class="form-control" id="dn" onfocusout="verifAge()" placeholder="Date de Naissance">
+					  </div>
+
+					  <div class="form-group">
+							<label for="civilite">Civilité :</label>
+							<select id="select" class="form-control">
+								<option value="" selected>- Choisir votre civilité -</option>
+								<option value="">Homme</option>
+								<option value="">Femme</option>
+							</select>
+					  </div>
+	            </div>
+			</form>
+		</div>
+
+		<div id="q1" style="display: none">
+				<div class="container">
+					<div class="row" >
+						<div class="col">
+							<div class="form-check" style="margin-left: auto; margin-right: auto; text-align: center;">
+								<label>Question N°1</label>
+								<div class="form-group">
+                                    <input class="form-check-input" type="radio" name="radio1" id="radio1" value="1" checked>
+                                    <label class="form-check-label" for="radio1">Peu satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio1" id="radio1" value="2">
+                                    <label class="form-check-label" for="radio1">Moyennement satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio1" id="radio1" value="3">
+									<label class="form-check-label" for="radio1">Très satisfait</label>
+								</div>
+
+								<br/><br/>
+
+								<label>Question N°3</label>
+								<div class="form-group">
+									<input class="form-check-input" type="radio" name="radio3" id="radio3" value="1" checked>
+                                    <label class="form-check-label" for="radio3">Peu satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio3" id="radio3" value="2">
+                                    <label class="form-check-label" for="radio3">Moyennement satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio3" id="radio3" value="3">
+									<label class="form-check-label" for="radio3">Très satisfait</label>
+								</div>
+							</div>
+						</div>
+
+						</br></br>
+
+						<div class="col">
+							<div class="form-check" style="margin-left: auto; margin-right: auto; text-align: center;">
+								<label>Question N°2</label>
+								<div class="form-group">
+									<input class="form-check-input" type="radio" name="radio2" id="radio2" value="1" checked>
+                                    <label class="form-check-label" for="radio2">Peu satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio2" id="radio2" value="2">
+                                    <label class="form-check-label" for="radio2">Moyennement satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio2" id="radio2" value="3">
+									<label class="form-check-label" for="radio2">Très satisfait</label>
+								</div>
+
+								<br/></br/>
+
+								<label>Question N°4</label>
+								<div class="form-group">
+                                    <input class="form-check-input" type="radio" name="radio4" id="radio4" value="1" checked
+                                    
+                                    
+                                    >
+                                    <label class="form-check-label" for="radio4">Peu satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio4" id="radio4" value="2">
+                                    <label class="form-check-label" for="radio4">Moyennement satisfait</label>
+                                    <input class="form-check-input" type="radio" name="radio4" id="radio4" value="3">
+									<label class="form-check-label" for="radio4">Très satisfait</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br/>
+				</div>
+		</div>
+
+		<div id="q2" style="display: none">
+			<form method='post'>
+					<div class="container">
+						<div class="form-group">
+							<label for="select1">Comment noteriez vous votre expérience avec le support :</label>
+							<select class="form-control" id="select1">
+                                <option value="1">Peu satisfait</option>
+                                <option value="2">Moyennement satisfait</option>
+                                <option value="3">Très satisfait</option>
+							  </select>
+                        </div>
+                        
+                        <br/>
+
+						<div class="form-group">
+							<label for="select2">Nous allons ajouter un service d'aide en direct. Comment seriez-vous satisfait de cette évolution :</label>
+							<select class="form-control" id="select2">
+                                <option value="1">Peu satisfait</option>
+                                <option value="2">Moyennement satisfait</option>
+                                <option value="3">Très satisfait</option>
+							  </select>
+						  </div>
+					</div>
+            </form>
+            
+            <br/></br/>
+		</div>
+
+		<div id="q3" style="display: none">
+			<form method='post'>
+					<div class="container">
+						<div class="form-group">
+							<label for="url">L'URL de la page que vous visitez le plus :</label>
+                            <input type="text" class="form-control" id="url" onfocusout="verifURL()" placeholder="Entrer URL">
+                        </div>
+                        
+                        <br/>
+
+						<div class="form-group">
+							<label for="note">Sur une note de 1 à 10, à quel point êtes-vous susceptible de conseillez nos services :</label>
+							<input type="text" class="form-control" id="note" onfocusout="verifNote()" placeholder="Entrer une note">
+                        </div>
+                        
+                        <br/>
+
+						<div class="form-group">
+							<label for="date">Date à laquelle vous vous êtes connecté la dernière fois :</label>
+							<input type="text" class="form-control" id="date" onfocusout="verifDate()" placeholder="Entrer une date">
+						</div>
+					</div>
+			</form>
+		</div>
+
+		<div id="q4" style="display: none">
+			<form method='post'>
+				<div class="container">
+					<label for="commentaire">Commentaire supplémentaire :</label>
+					<div class="form-group">
+						<textarea class="form-control" id="commentaire" maxlength="180" onfocusout="protection()" rows="3"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div id="q5" style="display: none">
+			<div class="container">
+				<center>
+					<h3 style="font-weight: 700;">Votre résultat :</h3>
+					<br/><br/>
+					<div>
+                        <span id="img-peu" style="display:none;">
+                            <img src="img/peu.png"/>
+                        </span>
+                        <br/><br/>
+                        <span id="peu" style="display:none;">Vous êtes peu satisfait de votre expérience utilisateur.</span>
+                        
+                        <span id="img-moyen" style="display:none;">
+                            <img src="img/moyen.png"/>
+                        </span>
+                        <br/><br/>
+                        <span id="moyen" style="display:none;">Vous êtes moyennement satisfait de votre expérience utilisateur.</span>
+                        
+                        <span id="img-tres" style="display:none;">
+                            <img src="img/tres.png"/>
+                        </span>
+                        <br/><br/>
+                        <span id="tres" style="display:none;">Vous êtes très satisfait de votre expérience utilisateur.</span>
+					</div>
+				</center>
+			</div>
+		</div>
+
+		<center>
+			<button id="next" type="submit" class="bouton" onclick="next()">Suivant</button>
+			<button id="cookies" class="bouton" onclick="deleteAllCookies();">Supprimer les cookies</button>
+		</center>
+	</div>
+
+</br></br></br></br>
+
+    <div id="footer"></div>
+
+	</body>
+</html>
