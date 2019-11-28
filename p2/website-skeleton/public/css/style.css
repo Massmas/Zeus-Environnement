@@ -1,0 +1,347 @@
+body {
+  font-family: Segoe UI;
+  background: -webkit-linear-gradient(right, #f0f0f0, #f8f8f8);
+  z-index: -100;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+hr {
+  position: relative;
+  display: block;
+  height: 1px;
+  border-top: 1px solid #eee;
+  padding: 0px;
+  margin-top: 10px;
+  margin-bottom: -13px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+img.logo-fbb:hover {
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+a.nav2:hover {
+  transition: background;
+  background: -webkit-linear-gradient(left, #4eeb42, #17188c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-attachment: fixed;
+}
+
+.nav1 {
+  padding: 0px 8px;
+  margin-top: 150px;
+  font-weight: 700;
+  font-size: 16.2px;
+  line-height: 3.6em;
+  color: #f0f0f0;
+}
+
+a:hover.nav1 {
+  color: white;
+}
+
+.nav2 {
+  padding: 10px 25px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  background-color: #fff;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-attachment: fixed;
+}
+
+.nav3 {
+  padding: 0px 8px;
+  font-weight: 700;
+  font-size: 16.2px;
+  line-height: 3.6em;
+  color: #454d5d;
+}
+
+.lien1 {
+  margin-left: 15px;
+}
+
+.lien3 {
+  margin-left: 8px;
+}
+
+.pres-permis {
+  text-align: center;
+  margin-left: 14px;
+  margin-right: 14px;
+  padding: 15px 30px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  transition: 10ms ease-out;
+}
+
+.pres-permis:before {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  content: '';
+  width: 100%;
+  height: 102%;
+  background: -webkit-linear-gradient(right, #134b7b, #0ca35e);
+  z-index: -1;
+  transform: translate(-100%);
+  transform-origin: left bottom;
+}
+
+.pres-permis:hover:before {
+  transition: 650ms ease;
+  transform: translate(100%);
+  z-index: -1;
+}
+
+.desc-permis {
+  background-color: #f0f0f0;
+  margin-left: 14px;
+  margin-right: 14px;
+  text-align: center;
+  padding: 15px 50px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  background-image: url(img/fond-permis.jpg);
+  z-index: 1;
+  display: inline-block;
+}
+
+.mtl {
+  margin-top: 50px;
+}
+.mbl {
+  margin-bottom: 50px;
+}
+.mts {
+  margin-top: 15px;
+}
+.mbs {
+  margin-bottom: 15px;
+}
+
+.menu-depliant {
+  position: absolute;
+  top: 4%;
+  right: 1.5%;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  animation-duration: 500ms;
+  animation-name: 'fenetre-fermer';
+}
+
+@keyframes fenetre-ouvrir {
+    from {
+      width: 40px;
+      height: 40px;
+    }
+    50% {
+      width: 40px;
+      height: 550px;
+    }
+    to {
+      width: 400px;
+      height: 550px;
+    }
+}
+
+@keyframes fenetre-fermer {
+    from {
+      width: 400px;
+      height: 550px;
+      background: linear-gradient(0deg, #fff 77%, transparent 23%),
+                  linear-gradient(90deg, #0ca35e 0%, #134b7b 100%);
+    }
+    50% {
+      width: 400px;
+      height: 40px;
+      background-color: #242931;
+    }
+    to {
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+    }
+}
+
+.menu-depliant.active {
+  animation-duration: 650ms;
+  animation-name: 'fenetre-ouvrir';
+  width: 400px;
+  height: 550px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(0deg, #fff 76%, transparent 24%),
+              linear-gradient(90deg, #0ca35e 0%, #134b7b 100%);
+}
+
+.menu-depliant input {
+  padding: 10px;
+  display: inline-block;
+  margin-top: 22px;
+  margin-left: 20px;
+  width: calc(84%);
+  height: 30px;
+  border: none;
+  color: #242931;
+  font-size: 36px;
+  font-family: Segoe UI;
+  font-weight: 700;
+}
+
+.menu-depliant button {
+  margin-top: 50px;
+  margin-left: 30px;
+  display: inline-block;
+  width: calc(84%);
+}
+
+.icone {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: all 500ms;
+  overflow: hidden;
+}
+
+.menu-depliant.active .icone {
+  background-color: #242931;
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+}
+
+.icone:before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border: 3px solid #242931;
+  border-radius: 15px;
+  transition: all 500ms;
+}
+
+.icone:after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 3px solid #242931;
+  border-radius: 10px;
+  transition: all 500ms;
+}
+
+.menu-depliant.active .icone:before {
+  top: 14px;
+  left: 2px;
+  width: 30px;
+  height: 0px;
+  border: 3px solid #fff;
+  transform: rotate(45deg);
+  transition: all 500ms;
+}
+
+.menu-depliant.active .icone:after {
+  top: 14px;
+  right: 2px;
+  width: 30px;
+  height: 0px;
+  border: 3px solid #fff;
+  transform: rotate(-45deg);
+  transition: all 500ms;
+}
+
+.bouton {
+  background-color: #242931;
+  border-radius: 3px;
+  font-weight: 700;
+  color: #ffffff;
+  border: 5px solid transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.bouton-anim {
+  background-color: #242931;
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: Segoe UI;
+  color: #ffffff;
+  font-size: 36px;
+  margin-top: -20px;
+  padding: 0px 8px;
+  border: 5px solid transparent;
+  padding-bottom: 3px;
+  transition: all 250ms;
+  cursor: pointer;
+}
+
+.bouton-anim:hover {
+  background: linear-gradient(to right, #0ca35e, #134b7b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image: linear-gradient(to left, #134b7b, #0ca35e) 1;
+  transition: all 250ms;
+}
+
+.lien-formulaire-inscription {
+  color: #242931;
+  font-family: Segoe UI;
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.lien-formulaire-inscription:hover {
+  color: #060606;
+  text-decoration: underline;
+}
+
+.titre-formulaire-connexion {
+  color: #fff;
+  font-family: Segoe UI;
+  font-weight: 700;
+  font-size: 60px;
+  margin-left: 48px;
+  margin-top: 26px;
+}
+
+.haut {
+  color: white;
+  display: inline-block;
+  margin: 0 5px 1px 0;
+}
+
+#haut {
+  text-align: right;
+}
+
+.form-check-label {
+    padding-right: 30px;
+}
