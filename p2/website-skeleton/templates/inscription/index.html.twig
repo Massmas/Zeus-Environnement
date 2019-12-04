@@ -1,17 +1,33 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formClient 'bootstrap_4_layout.html.twig' %}
+
 {% block title %}Hello InscriptionController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
+<div class="container">
     <h1>Inscription</h1>
 
-    {{ form(formClient) }}
+    {{ form_start(formClient) }}
+    <div class="form-group">
+        <label for="">Login :</label>
+        {{ form_widget(formClient.login) }}
+    </div>
+
+    <div class="form-group">
+    <label for="">MDP :</label>
+    {{ form_widget(formClient.mdp) }}
+    </div>
+
+    <div class="form-group">
+    <label for="">Mail :</label>
+    {{ form_widget(formClient.mail) }}
+    </div>
+
+     <button type="submit" class="btn btn-success"></button
+    {{ form_end(formClient) }}
+   
 
 </div>
 {% endblock %}
