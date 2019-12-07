@@ -3,11 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @UniqueEntity(
+ * fields={"mail"},
+ * message="E-mail déjà inscrit !")
  */
-class Client
+class Client implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,48 +25,52 @@ class Client
     /**
      * @ORM\Column(type="string", length=30)
      */
-    private $login;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères !")
      */
-    private $mdp;
+    private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Vos mots de passe doivent correspondre !")
+     */
+    public $mdp2;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Email()
      */
     private $mail;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $dateAt;
+    
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLogin(): ?string
+    public function getUsername(): ?string
     {
-        return $this->login;
+        return $this->username;
     }
 
-    public function setLogin(string $login): self
+    public function setUsername(string $username): self
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function getPassword(): ?string
     {
-        return $this->mdp;
+        return $this->password;
     }
 
-    public function setMdp(string $mdp): self
+    public function setPassword(string $password): self
     {
-        $this->mdp = $mdp;
+        $this->password = $password;
 
         return $this;
     }
@@ -77,15 +87,19 @@ class Client
         return $this;
     }
 
-    public function getDateAt(): ?\DateTimeInterface
+    public function eraseCredentials()
     {
-        return $this->dateAt;
+        
     }
 
-    public function setDateAt(\DateTimeInterface $dateAt): self
+    public function getSalt()
     {
-        $this->dateAt = $dateAt;
-
-        return $this;
+        
     }
+
+    public function getRoles()
+    {
+        return['ROLE_USER'];
+    }
+
 }

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<div class="container">
+    <h1>Inscription</h1>
+    {{form_start(form) }}
+    {{ form_row(form.username,{'label' : 'Identifiant :', 'attr': {'placeholder': 'exemple'}}) }}
+    {{ form_row(form.mail,{'label' : 'E-mail :', 'attr': {'placeholder': 'exemple@exemple.exemple'}}) }}
+    {{ form_row(form.password,{'label' : 'Mot de passe :', 'attr': {'placeholder': 'Mot de passe'}}) }}
+    {{ form_row(form.mdp2,{'label' : 'Confirmation mot de passe : ', 'attr': {'placeholder': 'Répétez votre mot de passe'}}) }}
+    <button type="submit" class="btn btn-success">S'inscrire</button>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}
