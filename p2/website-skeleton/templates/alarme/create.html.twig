@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alarmes{% endblock %}
+
+{% block body %}
+<br/><br/><br/>
+<div class="container">
+    <h1>Alarme</h1>
+    {{ form_start(form, {'attr': {'id': 'form-alarme'}}) }}
+    {{ form_row(form.libelle,{'label' : 'Description :', 'attr': {'placeholder': 'Rentrez une description'}}) }}
+    {{ form_row(form.lieu,{'label' : 'Lieu :', 'attr': {'placeholder': 'Rentrez un lieu'}}) }}
+    {{ form_row(form.agent,{'label' : 'Agent :', 'attr': {'placeholder': 'Assigner un agent'}}) }}
+    {{ form_row(form.categorie,{'label' : 'Catégorie : ', 'attr': {'placeholder': 'Choisissez une catégorie'}}) }}
+    <button type="submit" class="btn btn-success" onclick="submitForm()">Créer alarme</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+</script>
+{% endblock %}

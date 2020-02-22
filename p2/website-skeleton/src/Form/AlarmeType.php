@@ -2,31 +2,31 @@
 
 namespace App\Form;
 
-use App\Entity\Client;
+use App\Entity\Alarme;
 use Symfony\Component\Form\AbstractType;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class RegistrationType extends AbstractType
+class AlarmeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password', PasswordType::class)
-            ->add('mdp2',PasswordType::class)
-            ->add('mail', EmailType::class)
+            ->add('libelle', TextType::class)
+            ->add('lieu', TextType::class)
+            ->add('agent', TextType::class)
+            ->add('categorie', TextType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Client::class,
+            'data_class' => Alarme::class,
         ]);
     }
 }
